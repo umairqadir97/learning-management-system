@@ -1,5 +1,6 @@
 # Learning-Management-Syatem
-Repository for new in development django project : Learning Management system 
+This is Prototype of django based project with Ayulla: Learning Management System 
+
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
@@ -8,8 +9,6 @@ This README would normally document whatever steps are necessary to get your app
 
 * Quick summary
 * Version
-
-### How do I get set up? ###
 
 ## Summary of set up ##
 
@@ -22,13 +21,9 @@ This README would normally document whatever steps are necessary to get your app
 * How to run tests
 * Deployment instructions
 
+
 ### Contribution guidelines ###
 
 * Writing tests
 * Code review
 * Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
