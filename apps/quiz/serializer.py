@@ -3,9 +3,11 @@ from discussion.models import DiscussionTopic, DiscussionEntry
 
 
 class TopicSerializer(serializers.ModelSerializer):
+   
     class Meta:
         model = DiscussionTopic
         exclude = ('slug',)
+
 
 class ReplySerializer(serializers.ModelSerializer):
 	class Meta:

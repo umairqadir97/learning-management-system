@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-ADMINS = [('Osama Rasheed', 'iamosamarasheed@gmail.com'), ]
+ADMINS = [('Umair Qadir', 'umairqadir97@gmail.com'), ]
 
 # Application definition
 
@@ -46,10 +46,10 @@ INSTALLED_APPS = [
     'captcha',
     'hub',
     'accounts',
-    'quiz',    
-    'assignments',    
-    'courses',
-    'discussion',
+    # 'quiz',    
+    # 'assignments',    
+    # 'courses',
+    # 'discussion',
     'rest_framework',
 ]
 
@@ -104,8 +104,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'prepboard_staging',
-        'USER': 'root',
-        'PASSWORD': 'l_pq9905+@s*6',
+        'USER': 'umair',
+        'PASSWORD': 'adminadmin',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
     },

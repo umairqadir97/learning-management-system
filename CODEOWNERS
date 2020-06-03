@@ -1,0 +1,14 @@
+#
+# pattern:
+#
+# file/directory	user
+#
+
+
+# *.js	@umairqadir97
+
+# tooling/	@umairqadir97
+
+# components/*.md	@umairqadir97
+
+*	@umairqadir97

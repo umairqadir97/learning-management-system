@@ -22,7 +22,7 @@ class Quiz(models.Model):
     grade = models.PositiveIntegerField(default=0)
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     assignment_group = models.ForeignKey(AssignmentGroup, on_delete=models.CASCADE)
-    context_module_tags = models.ForeignKey(ContentTag, on_delete=models.CASCADE) # Parent App Needed
+    # context_module_tags = models.ForeignKey(ContentTag, on_delete=models.CASCADE) # Parent App Needed
     quiz_groups = models.ForeignKey('QuizGroup', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related')
     quiz_questions = models.ManyToManyField('QuizQuestion', related_name='%(app_label)s_%(class)s_related')
     quiz_regrades = models.ForeignKey('QuizRegrade', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related')

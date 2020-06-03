@@ -15,7 +15,7 @@ from django.http import HttpResponse, \
 
 
 from .models import PasswordRecovery
-from .forms import AuthenticationForm, CaptchaForm
+# from .forms import AuthenticationForm, CaptchaForm
 
 
 # @permission_required('polls.can_vote', login_url='/loginpage/')
@@ -34,7 +34,7 @@ def custom_login(request):
         username = request.POST.get("username", None)
         password = request.POST.get("password", None)
         remember_me = request.POST.get('remember_me', False)
-        auth_form = AuthenticationForm(request.POST)
+        # auth_form = AuthenticationForm(request.POST)
         if auth_form.is_valid():
             user = authenticate(username=username, password=password)
             if user is not None:
@@ -58,7 +58,8 @@ def custom_login(request):
 
     else:
         form = CaptchaForm()
-        context['form'] = form
+        # context['form'] = form
+        context['form'] = ""
 
     return render(request, 'login.html', context)
 

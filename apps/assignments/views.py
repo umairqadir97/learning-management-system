@@ -2,14 +2,14 @@ from rest_framework import mixins
 from rest_framework import permissions
 from rest_framework import status
 from rest_framework import viewsets
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, JSONParser
 
-from .custom_viewsets import (
-		CreateListRetrieveUpdateViewSet,
-		RetrieveUpdateViewSet
-	)
+# from .custom_viewsets import (
+# 		CreateListRetrieveUpdateViewSet,
+# 		RetrieveUpdateViewSet
+# 	)
 
 from .models import (
 		Assignment, 
@@ -28,14 +28,15 @@ from .serializers import (
 
 
 
-class AssignmentViewSet(CreateListRetrieveUpdateViewSet):
+# class AssignmentViewSet(CreateListRetrieveUpdateViewSet):
+class AssignmentViewSet():
 	"""
 	API endpoint that allows a user to create or update assignments.
 	---
 	"""
 	queryset = Assignment.objects.all()
 	serializer_class = AssignmentSerializer
- 	permission_classes = (permissions.AllowAny,)
+	permission_classes = (permissions.AllowAny,)
 
 	def get_serializer_class(self):
 		#Depending of the request user, we should switch serializers here. 
@@ -54,20 +55,19 @@ class AssignmentViewSet(CreateListRetrieveUpdateViewSet):
 		#Students should only see published assignments, intructors published, and non publish
 		# if request.user.is_student:
 		# 	qs = queryset.filter(published=True)
-
 		return qs
 
 
 	#Should we create different methods if we want user to 
 	#publish/delete multiples assignments at the same time?
-	@detail_route(methods=['put'])
+	@action(methods=['put'])
 	def publish(self, request, *args, **kwargs):
 		assignment = self.get_object()
 		assignment.published = not assignment.published
 		assignment.save()
 		return Response(assignment.published)
 
-	@detail_route(methods=['put'])
+	@action(methods=['put'])
 	def delete(self, request, *args, **kwargs):
 		assignment = self.get_object()
 		assignment.deleted = True
@@ -75,13 +75,14 @@ class AssignmentViewSet(CreateListRetrieveUpdateViewSet):
 		return Response(assignment.deleted)
 
 
-class StudentAssignmentViewSet(RetrieveUpdateViewSet):
+# class StudentAssignmentViewSet(RetrieveUpdateViewSet):
+class StudentAssignmentViewSet():
 	queryset = StudentAssignmentDate.objects.all()
 	serializer_class = AssigmentSubmissionDetailSerializer
 	permission_classes = (permissions.AllowAny,)
 	parser_classes = (MultiPartParser,JSONParser,)
 
-	@detail_route(methods=['post'])
+	@action(methods=['post'])
 	def submit_response(self, request, *args, **kwargs):
 		
 		student_assignment = self.get_object()
@@ -97,7 +98,7 @@ class StudentAssignmentViewSet(RetrieveUpdateViewSet):
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 			
 
-	@detail_route(methods=['post'])
+	@action(methods=['post'])
 	def comment_submission(self, request, *args, **kwargs):
 		
 		student_assignment = self.get_object()

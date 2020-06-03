@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .serializers import QuizSerializer
+# from .serializers import QuizSerializer
 from .models import Quiz
 from rest_framework import mixins
 from rest_framework.response import Response
@@ -17,7 +17,7 @@ class QuizCreateListRetrieveViewSet(mixins.CreateModelMixin,
 class QuizViewSet(QuizCreateListRetrieveViewSet):
     
     queryset = Quiz.objects.all()
-    serializer_class = QuizSerializer
+    # serializer_class = QuizSerializer
     permission_classes = (permissions.AllowAny,)
 
     def get_serializer_class(self):
@@ -33,7 +33,7 @@ class QuizViewSet(QuizCreateListRetrieveViewSet):
     def list(self, request):
         
         queryset = Quiz.objects.all()
-        serializer = QuizSerializer(queryset, many=True)
+        # serializer = QuizSerializer(queryset, many=True)
         
         return Response(serializer.data)
 
@@ -41,7 +41,7 @@ class QuizViewSet(QuizCreateListRetrieveViewSet):
         
         queryset = Quiz.objects.all()
         quiz = get_object_or_404(queryset, pk=pk)
-        serializer = QuizSerializer(quiz)
+        # serializer = QuizSerializer(quiz)
         
         return Response(serializer.data)
 
